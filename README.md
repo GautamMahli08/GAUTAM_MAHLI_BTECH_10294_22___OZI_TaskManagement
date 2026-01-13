@@ -77,3 +77,128 @@ Database on MongoDB Atlas
 Environment variables managed securely
 
 Systemd service for backend (24/7 uptime)
+
+
+| Layer        | Technology                                |
+| ------------ | ----------------------------------------- |
+| **Frontend** | React + Vite + Tailwind CSS               |
+| **Backend**  | FastAPI + Python + Pydantic               |
+| **Database** | MongoDB Atlas                             |
+| **Auth**     | JWT + Email Verification                  |
+| **Email**    | Gmail SMTP                                |
+| **Hosting**  | AWS EC2, S3, CloudFront                   |
+| **DevOps**   | Systemd, Nginx (optional), Docker (ready) |
+
+
+| Component       | URL                                                                                                                                                            | Status |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| **Frontend**    | [http://taskmanagement-btech10294-22-mahli.s3-website.eu-north-1.amazonaws.com](http://taskmanagement-btech10294-22-mahli.s3-website.eu-north-1.amazonaws.com) | ✅ Live |
+| **Backend API** | [http://13.51.156.213:8000/docs](http://13.51.156.213:8000/docs)                                                                                               | ✅ Live |
+| **Database**    | MongoDB Atlas (task_management_db)                                                                                                                             | ✅ Live |
+
+⚠️ Note for Mobile Users:
+Use http:// (not https://) in the browser address bar.
+
+taskflow/
+├── backend/
+│   ├── app/
+│   │   ├── api/          # API Routes (auth, tasks, users)
+│   │   ├── core/         # Config, DB connection, Email setup
+│   │   ├── models/       # Pydantic Schemas
+│   │   ├── services/     # Business Logic
+│   │   └── main.py       # FastAPI entry point
+│   ├── .env              # Environment Variables
+│   └── requirements.txt
+└── frontend/
+    ├── src/
+    │   ├── components/   # React Components (Navbar, Board, Cards)
+    │   ├── services/     # API Calls (Axios)
+    │   └── App.jsx
+    ├── dist/             # Production Build (for S3)
+    └── vite.config.js
+
+
+Setup & Deployment Guide
+
+Backend (AWS EC2)
+# 1. SSH into EC2
+ssh -i taskflow-key.pem ubuntu@13.51.156.213
+
+# 2. Go to backend directory
+cd ~/taskflow-backend
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Start backend service
+sudo systemctl start taskflow-backend
+sudo systemctl enable taskflow-backend
+
+Environment Variables (.env)
+MONGODB_URL=mongodb+srv://username:password@cluster.mongodb.net/task_management_db
+DATABASE_NAME=task_management_db
+FRONTEND_URL=http://taskmanagement-btech10294-22-mahli.s3-website.eu-north-1.amazonaws.com
+CORS_ORIGINS=["http://taskmanagement-btech10294-22-mahli.s3-website.eu-north-1.amazonaws.com"]
+MAIL_USERNAME=your@gmail.com
+MAIL_PASSWORD=app-password
+
+
+Frontend (AWS S3)
+# 1. Build frontend
+npm run build
+
+# 2. Upload to S3
+aws s3 sync dist/ s3://taskmanagement-btech10294-22-mahli --delete
+
+
+S3 Bucket Settings
+
+Block Public Access: OFF
+
+Static Website Hosting: ON
+
+Bucket Policy: Public Read Access
+
+
+| Method | Endpoint           | Description        |
+| ------ | ------------------ | ------------------ |
+| POST   | /api/auth/register | User Registration  |
+| POST   | /api/auth/login    | User Login         |
+| GET    | /api/auth/verify   | Email Verification |
+| GET    | /api/tasks         | Get All Tasks      |
+| POST   | /api/tasks         | Create Task        |
+| PUT    | /api/tasks/{id}    | Update Task        |
+| DELETE | /api/tasks/{id}    | Delete Task        |
+
+
+📄 Full API Docs:
+👉 http://13.51.156.213:8000/docs
+
+
+📱 Mobile Drag & Drop (Planned Enhancement)
+
+Currently drag & drop works on desktop.
+For mobile support, touch events can be added:
+
+onTouchStart={handleTouchStart}
+onTouchMove={handleTouchMove}
+onTouchEnd={handleTouchEnd}
+
+
+| Issue              | Solution                                      |
+| ------------------ | --------------------------------------------- |
+| S3 Access Denied   | Enable public access + update bucket policy   |
+| CORS Error         | Update `CORS_ORIGINS` in backend `.env`       |
+| Mobile not loading | Use `http://` not `https://`                  |
+| Backend 404        | `sudo systemctl status taskflow-backend`      |
+| MongoDB auth error | Ensure Atlas user has **Read and Write** role |
+
+📈 Architecture Diagram
+┌─────────────────┐    ┌──────────────────┐    ┌────────────────────┐
+│   Frontend      │───▶│    Backend       │───▶│   MongoDB Atlas    │
+│   (S3 Static)   │    │  (FastAPI EC2)   │    │ task_management_db │
+└─────────────────┘    └──────────────────┘    └────────────────────┘
+         │                       │
+         └───────────────────────┼── Gmail SMTP (Email Verification)
+
+
