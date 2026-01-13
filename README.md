@@ -14,6 +14,10 @@ http://taskmanagement-btech10294-22-mahli.s3-website.eu-north-1.amazonaws.com/da
 ---
 
 
+##  Architecture Diagram
+<img width="592" height="262" alt="awsoo drawio" src="https://github.com/user-attachments/assets/16a638ed-ecef-4493-980a-ae788057f9f0" />
+
+
 ## 🎯 Key Features
 
 ### 🔐 Authentication & User Management
