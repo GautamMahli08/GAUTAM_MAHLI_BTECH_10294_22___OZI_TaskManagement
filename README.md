@@ -118,9 +118,6 @@ task/
     └── vite.config.js
 
 
-
----
-
 ## 🔧 Setup & Deployment Guide
 
 ### Backend (AWS EC2)
