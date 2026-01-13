@@ -1,4 +1,4 @@
-# 🚀 Task Management System (Kanban Based) – TaskFlow
+# 🚀 Task Management System (Kanban Based) 
 
 TaskFlow is a **production-ready, full-stack Task Management System** built with a modern tech stack, featuring secure authentication, role-based access, a Kanban board with drag & drop, real-time CRUD operations, and email verification.  
 The application is fully deployed on **AWS + MongoDB Atlas** and follows clean architecture and best practices.
