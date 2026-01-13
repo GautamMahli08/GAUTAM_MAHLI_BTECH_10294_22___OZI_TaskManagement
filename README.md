@@ -1,88 +1,79 @@
-Task Management System (Kanban Based)
+# 🚀 Task Management System (Kanban Based) – TaskFlow
 
-TaskFlow is a production-ready, full-stack Task Management System built with a modern tech stack, featuring secure authentication, role-based access, a Kanban board with drag & drop, real-time CRUD operations, and email verification.
-The application is fully deployed on AWS + MongoDB Atlas and follows clean architecture and best practices.
+TaskFlow is a **production-ready, full-stack Task Management System** built with a modern tech stack, featuring secure authentication, role-based access, a Kanban board with drag & drop, real-time CRUD operations, and email verification.  
+The application is fully deployed on **AWS + MongoDB Atlas** and follows clean architecture and best practices.
 
-DEMO LINK : http://taskmanagement-btech10294-22-mahli.s3-website.eu-north-1.amazonaws.com/dashboard
+🔗 **Live Demo:**  
+http://taskmanagement-btech10294-22-mahli.s3-website.eu-north-1.amazonaws.com/dashboard
 
-🎯 Key Features
-🔐 Authentication & User Management
+---
 
-User Registration
+## 🎯 Key Features
 
-Login & Logout
+### 🔐 Authentication & User Management
+- User Registration  
+- Login & Logout  
+- Email Verification (Gmail SMTP)  
+- JWT-based Authentication  
+- Update & Delete Profile  
+- Secure Protected Routes  
 
-Email Verification (Gmail SMTP)
+---
 
-JWT-based authentication
+### 👥 Role-Based Access Control
 
-Update & Delete Profile
+**Admin**
+- Can view and manage all users and tasks  
 
-Secure protected routes
+**User**
+- Can manage only their own tasks  
 
-👥 Role-Based Access Control
+---
 
-Admin
+### 🗂️ Task Management (CRUD)
+- Create Task  
+- Read Task (User-specific)  
+- Update Task  
+- Delete Task  
+- Filter tasks by status (Pending / In Progress / Completed)  
 
-Can view and manage all users and tasks
+---
 
-User
+### 🧩 Kanban Board
+- Three Columns:
+  - Pending
+  - In Progress
+  - Completed
+- Drag & Drop Support (Desktop)
+- Status automatically updates in backend
 
-Can manage only their own tasks
+---
 
-🗂️ Task Management (CRUD)
+### 📧 Email Verification
+- New users receive verification email
+- Account becomes active only after verification
 
-Create Task
+---
 
-Read Task (User-specific)
+### 📱 Responsive Design
+- Works on Desktop, Tablet, and Mobile
+- Clean, minimal UI using Tailwind CSS
 
-Update Task
+---
 
-Delete Task
+### ☁️ Production Ready
+- Backend deployed on AWS EC2
+- Frontend hosted on AWS S3 (Static Website)
+- Database on MongoDB Atlas
+- Environment variables managed securely
+- Systemd service for backend (24/7 uptime)
 
-Filter tasks by status (Pending / In Progress / Completed)
+---
 
-🧩 Kanban Board
-
-Three columns:
-
-Pending
-
-In Progress
-
-Completed
-
-Drag & Drop support (Desktop)
-
-Status automatically updates in backend
-
-📧 Email Verification
-
-New users receive verification email
-
-Account becomes active only after verification
-
-📱 Responsive Design
-
-Works on Desktop, Tablet, and Mobile
-
-Clean, minimal UI using Tailwind CSS
-
-☁️ Production Ready
-
-Backend deployed on AWS EC2
-
-Frontend hosted on AWS S3 (Static Website)
-
-Database on MongoDB Atlas
-
-Environment variables managed securely
-
-Systemd service for backend (24/7 uptime)
-
+## 🏗️ Tech Stack
 
 | Layer        | Technology                                |
-| ------------ | ----------------------------------------- |
+|--------------|-------------------------------------------|
 | **Frontend** | React + Vite + Tailwind CSS               |
 | **Backend**  | FastAPI + Python + Pydantic               |
 | **Database** | MongoDB Atlas                             |
@@ -91,17 +82,22 @@ Systemd service for backend (24/7 uptime)
 | **Hosting**  | AWS EC2, S3, CloudFront                   |
 | **DevOps**   | Systemd, Nginx (optional), Docker (ready) |
 
+---
 
-| Component       | URL                                                                                                                                                            | Status |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
-| **Frontend**    | [http://taskmanagement-btech10294-22-mahli.s3-website.eu-north-1.amazonaws.com](http://taskmanagement-btech10294-22-mahli.s3-website.eu-north-1.amazonaws.com) | ✅ Live |
-| **Backend API** | [http://13.51.156.213:8000/docs](http://13.51.156.213:8000/docs)                                                                                               | ✅ Live |
-| **Database**    | MongoDB Atlas (task_management_db)                                                                                                                             | ✅ Live |
+## 🚀 Live Deployment
 
-⚠️ Note for Mobile Users:
-Use http:// (not https://) in the browser address bar.
+| Component       | URL                                                                                               | Status |
+|-----------------|---------------------------------------------------------------------------------------------------|--------|
+| **Frontend**    | http://taskmanagement-btech10294-22-mahli.s3-website.eu-north-1.amazonaws.com                     | ✅ Live |
+| **Backend API** | http://13.51.156.213:8000/docs                                                                     | ✅ Live |
+| **Database**    | MongoDB Atlas (task_management_db)                                                                 | ✅ Live |
 
-taskflow/
+⚠️ **Note for Mobile Users:**  
+Use **http://** (not https://) in the browser address bar.
+
+
+## 🏗️ Tech Stack                                                                                                                
+task/
 ├── backend/
 │   ├── app/
 │   │   ├── api/          # API Routes (auth, tasks, users)
