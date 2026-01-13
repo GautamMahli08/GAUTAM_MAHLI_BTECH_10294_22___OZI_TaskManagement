@@ -6,7 +6,13 @@ The application is fully deployed on **AWS + MongoDB Atlas** and follows clean a
 🔗 **Live Demo:**  
 http://taskmanagement-btech10294-22-mahli.s3-website.eu-north-1.amazonaws.com/dashboard
 
+
+##  Workflow
+
+<img width="732" height="292" alt="OZI drawio" src="https://github.com/user-attachments/assets/73f5924d-31c5-47f0-b49a-d588dfb42211" />
+
 ---
+
 
 ## 🎯 Key Features
 
