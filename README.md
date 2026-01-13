@@ -154,11 +154,8 @@ aws s3 sync dist/ s3://taskmanagement-btech10294-22-mahli --delete
 
 
 S3 Bucket Settings
-
 Block Public Access: OFF
-
 Static Website Hosting: ON
-
 Bucket Policy: Public Read Access
 
 
@@ -194,6 +191,8 @@ onTouchEnd={handleTouchEnd}
 | Mobile not loading | Use `http://` not `https://`                  |
 | Backend 404        | `sudo systemctl status taskflow-backend`      |
 | MongoDB auth error | Ensure Atlas user has **Read and Write** role |
+
+```
 
 📈 Architecture Diagram
 ┌─────────────────┐    ┌──────────────────┐    ┌────────────────────┐
